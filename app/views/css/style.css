@@ -19,11 +19,19 @@ margin-top: 35px;
 	background-color: #fff;
 	margin-bottom: 25px;
 	border-radius: 4px;
+  padding: 20px;
 }
 
 .sectionwrap {
 margin-left: 15px;
 margin-right: 15px;
+}
+
+.sectionHeader {
+/*top: 20px;*/
+position: relative;
+color: #138185;
+margin-bottom: 20px;
 }
 
 select {
@@ -144,13 +152,13 @@ margin-bottom: 22px !important;
 
 /*DASHBOARD*/
 .dash-summary {
-margin: 20px 0px -20px;
+/*margin: 20px 0px -20px;*/
 text-align: center;
 }
 
 .dash-report {
-	padding-left: 20px;
-	padding-right: 20px;
+	*padding-left: 20px;
+	*padding-right: 20px;
 }
 
 .dash-summary p {
@@ -169,7 +177,7 @@ font-weight: 500;
 
 .dash-report button {
 float: right;
-margin-bottom: 15px;
+/*margin-bottom: 15px;*/
 }
 
 #dash-nf .section, #dash-ev .section {
@@ -230,10 +238,42 @@ font-weight: 500;
 .sectionselect label {
 margin-top: 5px;
 }
-
+.sectionselect>div {
+margin-bottom: 15px;
+}
 .recordsTablewrap {
 padding: 30px;
 }
 
+.recordsTableInfo {
+margin-bottom: 10px;
+height: 35px;
+}
+.recordsTableInfo p span {
+color: #27A1A5;
+}
+.recordsTableInfo p {
+font-weight: 600;
+font-size: 19px;
+margin-bottom: 0;
+}
+
 
 /*RECORDS*/
+
+/*MESSAGES*/
+.msgIndContainer {
+  background: #FAFAFA;
+border: 1px solid #EAEAEA;
+padding: 20px;
+margin-bottom: 15px;
+}
+
+.msg-msg {
+padding: 10px 20px;
+}
+
+#msg-edit-done, .msg-post-edit {
+  display: none;
+}
+/*MESSAGES*/
