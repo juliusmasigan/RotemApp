@@ -1,7 +1,7 @@
 <div id="navbar" data-spy="affix" data-offset-top="200">
         <ul class="nav nav-pills">
           <li class="<?php echo ($page == "dashboard" ? "active" : "")?>"><a href="dashboard.php">Dashboard</a></li>
-          <li class="<?php echo ($page == "messages" ? "active" : "")?>"><a href="#">Messages</a></li>
+          <li class="<?php echo ($page == "messages" ? "active" : "")?>"><a href="messages.php">Messages</a></li>
           <li class="<?php echo ($page == "reports" ? "active" : "")?>"><a href="reports.php">Reports</a></li>
           <li class="<?php echo ($page == "media" ? "active" : "")?>"><a href="#">Media</a></li>
           <li class="<?php echo ($page == "events" ? "active" : "")?>">
