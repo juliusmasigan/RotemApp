@@ -28,6 +28,9 @@
         <div class="alert alert-success">Welcome to SkillQuest!</div>
 
         <div class="section dash-report">
+            <div class="sectionHeader">
+              <h4>Reports Summary</h4>
+            </div>
             <div class="row">
                 <div id="dash-ttlstdnt" class="dash-summary col-xs-6 col-md-3">
                     <p>Total Students<br>
@@ -54,20 +57,19 @@
 
         <div class="row">
         <!--NEWS FEED-->
-            <div id="dash-nf" class="col-md-8">
+            <div id="dash-nf" class="col-md-7">
                 <div class="section">
                     <h4>News Feed 
                     <small class="right">
                         <button id="feed-edit-btn"  class="btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
                         <button id="feed-edit-done"  class="btn-link">Done</button>
-
                     </small>
                     </h4>
                     <hr>
                     <div id="dash-cont-nf">
                         <div class="dash-feed-post">
                            <div class="feed-post-edit right">
-                            <button onclick="deletePost();" class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
                            </div>
                            <div class="feed-user">
                             <img src="images/user-thumbnail-sm.png" class="pull-left">&nbsp;&nbsp;<span id="user-name" class="user-name"><a href="#">Juan dela Cruz</a></span><br>
@@ -80,7 +82,7 @@
 
                         <div class="dash-feed-post">
                            <div class="feed-post-edit right">
-                            <button onclick="$(this).parent().parent().fadeOut(300, function() { $(this).remove(); });" class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
                            </div>
                            <div class="feed-user">
                             <img src="images/user-thumbnail-sm.png" class="pull-left">&nbsp;&nbsp;<span id="user-name" class="user-name"><a href="#">George Adams</a></span><br>
@@ -97,7 +99,7 @@
                 </div>
             </div>
             <!--EVENTS-->
-            <div id="dash-ev" class=" col-md-4">
+            <div id="dash-ev" class=" col-md-5">
                 <div class="section">
                     <h4>Events <small class="right"><button class="btn-link">View All Events &raquo;</button></small></h4>
                     <hr>
