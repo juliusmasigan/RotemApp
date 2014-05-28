@@ -28,40 +28,62 @@
 
 
         <div class="row">
-            <div class="col-md-10">
-                <div class="sectionselect">
-                <label for="sectionselectlist" class="col-sm-2 control-label">Section:</label>
-                <div class="col-sm-4">
-                    <select id="sectionselectlist" name="Select Class" onchange="location = this.options[this.selectedIndex].value;">
-                    <option value="#" selected="">Section 1</option>
-                    <option value="#">Section 2</option>
-                    <option value="#">Section 3</option> 
-                    <option value="#">Section 4</option> 
-                    <option value="#">Section 5</option>
-                    <option value="#">Section 6</option>
-                </select>
+            <div class="col-md-12 recordsbtn">
+                <div class="btn-group classSelect">
+                 <button class="btn btn-default">Select Class</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                </ul>
                 </div>
-                <label for="examselectlist" class="col-sm-2 control-label">Exam Name:</label>
-                <div class="col-sm-4">
-                    <select id="examselectlist" name="Select Exam" onchange="location = this.options[this.selectedIndex].value;">
-                    <option value="#" selected="">1st Long Exam</option>
-                    <option value="#">2nd Long Exam</option>
-                    <option value="#">3rd Long Exam</option> 
-                    <option value="#">Pop Quiz</option> 
-                    <option value="#">Final Exam</option>
-                </select>
+
+                <div class="btn-group right">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-plus"></span>
+                        Create Record <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Add Class</a></li>
+                        <li><a href="#">Add Exam Record</a></li>
+                      </ul>
                 </div>
-            </div>
-            </div>
-            <div class="createRecord col-md-2">
-                <button class="btn btn-sm btn-primary">
-                    Create New Record <span class="glyphicon glyphicon-plus"></span>
-                </button>
+
             </div>
         </div>
 
 
         <div class="section recordsTablewrap">
+            <div class="recordsTableInfo">
+            <div class="className left">
+                <p>Class: <span> 3 </span></p>
+            </div>
+            <div class="btn-group examSelect right">
+                 <button class="btn btn-default">Select Exam Name</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">Long Exam 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Long Exam 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Final Exam</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
             <table id="recordsTable" class="table table-hover tablesorter tablesorter-default">
                 <thead>
                     <th id="numbering" class="sorter-false numbering" width="30">#</th>
