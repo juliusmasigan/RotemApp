@@ -8,10 +8,8 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="inputEmail3" class="col-sm-1 control-label">To:</label>
-          <div class="col-sm-11">
-            <input type="text" class="form-control" id="inputEmail3" placeholder="">
-          </div>
+          <label for="inputMessage">To:</label>
+          <input type="text" class="form-control" id="inputRecipient" placeholder="">
         </div>
         <div class="form-group">
           <label for="inputMessage">Message:</label>
@@ -20,7 +18,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-primary">Send Message</button>
       </form>
       </div>
     </div>

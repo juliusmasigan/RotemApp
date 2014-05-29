@@ -24,18 +24,22 @@
     <div class="container wrap">
 
         <?php include('navbar.php');?>
-
+         <div class="alert alert-success">Message was successfully sent!</div>
         <div class="section">
             <div class="sectionHeader">
-                <h4>Messages
+                <h4>Messages&nbsp;&nbsp;&nbsp;
+                    <small class="">
+                    <button class="btn btn-link"> Inbox</button>
+                    <button class="btn btn-link"> Sent</button>
+                    </small>
                     <small class="right">
                         <button id="msg-create" class="btn-link" data-toggle="modal" data-target="#createMessage"><span class="glyphicon glyphicon-plus"></span></button>
                         <button id="msg-edit-btn"  class="btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
                         <button id="msg-edit-done"  class="btn-link">Done</button>
                     </small>
                 </h4>
-
                 <hr>
+
             </div>
             <div class="clear"></div>
             <div class="msgContainer">
@@ -45,7 +49,7 @@
                             <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
                     </div>
                     <div class="msg-user">
-                        <span id="user-name" class="user-name">Walter White</span><br>
+                        <span id="user-name" class="user-name">Walter</span><br>
                         <span class="feed-date">May 25, 2014</span>
                     </div>
                     <div class="msg-msg">
@@ -63,7 +67,7 @@
                             <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
                     </div>
                     <div class="msg-user">
-                        <span id="user-name" class="user-name">Jesse Pinkman</span><br>
+                        <span id="user-name" class="user-name">Jesse</span><br>
                         <span class="feed-date">May 25, 2014</span>
                     </div>
                     <div class="msg-msg">
