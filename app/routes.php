@@ -16,4 +16,9 @@ Route::get('/', function()
 	return View::make('index');
 });
 
-Route::controller('users', 'UserController');
+Route::post('users/login', 'UserController.login');
+
+Route::get('users/register', function()
+{
+	return View::make('register');
+});
