@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/jquery.simple.lightbox.css">
     <title>Skill Quest - Register</title>
-
+    <base href="http://localhost">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -55,8 +55,8 @@
                         Create Record <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Add Class</a></li>
-                        <li><a href="#">Add Exam Record</a></li>
+                        <li><a href="createClass.php">Add Class</a></li>
+                        <li><a href="createTest.php">Add Exam Record</a></li>
                       </ul>
                 </div>
 

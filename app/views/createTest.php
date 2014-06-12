@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/jquery.simple.lightbox.css">
     <title>Skill Quest - Add Exam Record</title>
-
+    <base href="http://localhost">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 

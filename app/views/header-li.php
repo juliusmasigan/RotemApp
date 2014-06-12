@@ -13,10 +13,11 @@
         </div>
         <div class="collapse navbar-collapse">
            <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <span>User!</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">My Profile</a></li>
+                <li><a href="profile.php">My Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Log out</a></li>

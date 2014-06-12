@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>Skill Quest - Register</title>
-
+    <base href="http://localhost">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -34,10 +34,10 @@
             <input type="text" class="form-control" placeholder="Username" required="">
             <input type="password" class="form-control" placeholder="Password" required="">
             <input type="password" class="form-control" placeholder="Confirm Password" required="">
-
-            <label class="checkbox">
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+            <select class="form-control">
+                <option>Student</option>
+                <option>Teacher</option>
+            </select>
             <button class="btn btn-lg btn-primary btn-block" type="submit" role="button">Register</button>
           </form>
         </div>

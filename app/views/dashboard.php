@@ -8,10 +8,10 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/jquery.simple.lightbox.css">
     <title>Skill Quest - Register</title>
-
+    <base href="http://localhost">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
+    
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     
@@ -63,6 +63,7 @@
                     <small class="right">
                         <button id="feed-edit-btn"  class="btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
                         <button id="feed-edit-done"  class="btn-link">Done</button>
+
                     </small>
                     </h4>
                     <hr>

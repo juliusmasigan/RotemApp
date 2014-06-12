@@ -3,7 +3,7 @@
           <li class="<?php echo ($page == "dashboard" ? "active" : "")?>"><a href="dashboard.php">Dashboard</a></li>
           <li class="<?php echo ($page == "messages" ? "active" : "")?>"><a href="messages.php">Messages</a></li>
           <li class="<?php echo ($page == "reports" ? "active" : "")?>"><a href="reports.php">Reports</a></li>
-          <li class="<?php echo ($page == "media" ? "active" : "")?>"><a href="#">Media</a></li>
+          <li class="<?php echo ($page == "media" ? "active" : "")?>"><a href="media.php">Media</a></li>
           <li class="<?php echo ($page == "events" ? "active" : "")?>">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Events<span class="caret"></span>
                 </a>

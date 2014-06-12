@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/jquery.simple.lightbox.css">
-    <title>Skill Quest - Create Test</title>
+    <title>Skill Quest - Add Exam Record</title>
     <base href="http://localhost">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -27,7 +27,24 @@
         <?php include('navbar.php');?>
 
         <div class="section">
-            <div class=""></div>
+            <div class="sectionHeader">
+                <h4>Add Class</h4>
+            </div>
+            <div class="addExam">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Enter Class Name" required="" autofocus="">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Enter Test Name" required="">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Enter Number of Items" required="">
+                        </div>
+                    </div>
+                </form>
+            </div>
 
         </div>
 
