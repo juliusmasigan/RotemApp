@@ -16,9 +16,29 @@ Route::get('/', function()
 	return View::make('index');
 });
 
-Route::post('users/login', 'UserController.login');
+Route::get('login', function()
+{
+	return View::make('login');
+});
 
-Route::get('users/register', function()
+Route::post('login', 'UserController.login');
+
+Route::get('register', function()
 {
 	return View::make('register');
+});
+
+Route::get('dashboard', function()
+{
+	return View::make('dashboard');
+});
+
+Route::get('reports', function()
+{
+	return View::make('reports');
+});
+
+Route::get('messages', function()
+{
+	return View::make('messages');
 });
