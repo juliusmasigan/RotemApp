@@ -5,7 +5,9 @@
 
 {{ Form::open(array('url' => "/register",'method' => "post", 'class' => "section form-register")) }}
             <h2 class="form-register-heading">Register</h2>
-            {{ Form::text('name', null, array('class' => "form-control", 'placeholder' => "Name")) }}
+            {{ Form::text('firstName', null, array('class' => "form-control", 'placeholder' => "First Name")) }}
+
+            {{ Form::text('lastName', null, array('class' => "form-control", 'placeholder' => "Last Name")) }}
 
             {{ Form::text('parentsName', null, array('class' => "form-control", 'placeholder' => "Parent's Name")) }}
 
