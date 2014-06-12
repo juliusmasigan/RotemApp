@@ -51,6 +51,11 @@ Route::get('media', function()
 	return View::make('media');
 });
 
+Route::get('forgotPassword', function()
+{
+	return View::make('forgotPassword');
+});
+
 Route::get('alerts', function()
 {
 	return View::make('alerts');
