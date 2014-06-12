@@ -44,3 +44,13 @@ Route::get('messages', function()
 {
 	return View::make('messages');
 });
+
+Route::get('media', function()
+{
+	return View::make('media');
+});
+
+Route::get('alerts', function()
+{
+	return View::make('alerts');
+});
