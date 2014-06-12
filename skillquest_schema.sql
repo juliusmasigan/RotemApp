@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2014 at 12:44 AM
+-- Generation Time: Jun 12, 2014 at 07:27 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(500) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `link_id` int(11) NOT NULL,
+  `user_type` varchar(255) NOT NULL,
+  `user_entity_id` int(11) NOT NULL,
   `status` varchar(45) NOT NULL,
   `log_time` datetime NOT NULL,
   `last_log_time` datetime NOT NULL,
