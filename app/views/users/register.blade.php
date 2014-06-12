@@ -21,7 +21,7 @@
 
             {{ Form::password('confpassword', array('class' => "form-control", 'placeholder' => "Confirm Password")) }}
 
-            {{ Form::select('userType', array('key' => "Student", 'value' => "Teacher"), 'key', array('class' => "form-control")) }}
+            {{ Form::select('userType', array('Student' => 'Student', 'Teacher' => 'Teacher'), 'key', array('class' => "form-control")) }}
 
             <br>
             {{ Form::submit('Submit', array('class' => 'btn btn-block btn-primary btn-lg')) }}
