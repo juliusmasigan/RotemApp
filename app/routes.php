@@ -13,10 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('index');
 });
 
-Route::get('users', function()
-{
-	return "fasdf";
-});
+Route::controller('users', 'UserController');
