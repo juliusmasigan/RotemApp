@@ -13,8 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('index');
+	return View::make('users.login');
 });
+
 
 Route::get('login', function()
 {
@@ -25,7 +26,7 @@ Route::post('login', 'UserController@login');
 
 Route::get('register', function()
 {
-	return View::make('register');
+	return View::make('users.register');
 });
 
 Route::post('/register', 'UserController@register');
