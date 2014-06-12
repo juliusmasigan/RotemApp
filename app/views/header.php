@@ -11,7 +11,8 @@
         </div>
         <div class="collapse navbar-collapse">
            <ul class="nav navbar-nav navbar-right">
-            <li><a href="register.php">Register New Account</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="/users/register">Register New Account</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
