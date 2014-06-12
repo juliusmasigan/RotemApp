@@ -32,8 +32,17 @@
             </div>
             <div class="addExam">
                 <form>
-                    <input type="text" class="form-control" placeholder="Enter Test Name">
-                <input type="text" class="form-control" placeholder="Enter Number of Items">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Enter Date" required="" autofocus="">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Enter Test Name" required="">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Enter Number of Items" required="">
+                        </div>
+                    </div>
                 </form>
             </div>
 
