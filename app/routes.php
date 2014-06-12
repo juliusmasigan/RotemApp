@@ -21,12 +21,14 @@ Route::get('login', function()
 	return View::make('login');
 });
 
-Route::post('login', 'UserController.login');
+Route::post('login', 'UserController@login');
 
 Route::get('register', function()
 {
 	return View::make('register');
 });
+
+Route::post('/register', 'UserController@register');
 
 Route::get('dashboard', function()
 {
