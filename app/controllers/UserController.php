@@ -2,88 +2,38 @@
 
 class UserController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+	public function register() {
+		$posts = Input::all();
 
+		//New model instantiation.
+		$student = new Student;
+		$user = new User;
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+		//Set rules for the user inputs.
+		$rules = array(
+			'firstName' => 'required',
+			'lastName' 	=> 'required',
+			'mNumber' 	=> 'required|numeric',
+			'email' 	=> 'required|email',
+		);
+		$validator = Validator::make($posts, $rules);
+		$validator->setAttributeNames(array(
+			'firstName' 	=> 'First Name',
+			'lastName' 		=> 'Last Name',
+			'parentsName' 	=> 'Parent\'s Name',
+			'mNumber' 		=> 'Mobile Number',
+			'email' 		=> 'Email',
+		));
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-	public function login($args) {
-		
+		//Validate the user inputs.
+		if($validator->fails()) {
+			return Redirect::to('register')->withErrors($validator)->withInput($posts);
+		}
+	
+		if(strtolower($posts['userType']) == 'student') {
+				
+		}elseif(strtolower($posts['userType']) == 'teacher') {
+		}
 	}
 
 }
