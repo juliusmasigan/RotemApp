@@ -7,12 +7,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">SkillQuest</a>
+          <a class="navbar-brand" href="/">SkillQuest</a>
         </div>
         <div class="collapse navbar-collapse">
            <ul class="nav navbar-nav navbar-right">
             <li><a href="#">About</a></li>
-            <li><a href="/users/register">Register New Account</a></li>
+            <li><a href="/register">Register New Account</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
