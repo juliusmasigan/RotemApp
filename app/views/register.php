@@ -25,7 +25,7 @@
 
 
         <div class="wrap-register">
-          <form class="section form-register" role="form">
+          <form class="section form-register" role="form" method="post" action="register">
             <h2 class="form-register-heading">Register</h2>
             <input type="text" class="form-control" placeholder="Student's Name" required="" autofocus="">
             <input type="text" class="form-control" placeholder="Parent's Name" required="">

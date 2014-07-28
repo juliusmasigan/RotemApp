@@ -29,7 +29,7 @@ Route::get('register', function()
 	return View::make('users.register');
 });
 
-Route::post('/register', 'UserController@register');
+Route::post('register', 'UserController@register');
 
 Route::get('dashboard', function()
 {

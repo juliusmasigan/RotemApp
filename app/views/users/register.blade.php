@@ -3,7 +3,7 @@
 @section('body-section')
 
 
-{{ Form::open(array('url' => "/register",'method' => "post", 'class' => "section form-register")) }}
+{{ Form::open(array('url' => "/register", 'method' => "POST", 'class' => "section form-register")) }}
             <h2 class="form-register-heading">Register</h2>
             {{ Form::text('firstName', null, array('class' => "form-control", 'placeholder' => "First Name")) }}
 
