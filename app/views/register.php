@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>Skill Quest - Register</title>
-    <base href="http://localhost">
+    <base href="http://skillquest.eu1.frbit.net">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 

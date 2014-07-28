@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/jquery.simple.lightbox.css">
     <title>Skill Quest - Register</title>
-    <base href="http://localhost">
+    <base href="http://skillquest.eu1.frbit.net">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     
@@ -51,7 +51,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn-link" type="button" onclick="location.href='reports.php'">View Reports &raquo;</button></div>
+                    <button class="btn-link" type="button" onClick="location.href='reports.php'">View Reports &raquo;</button></div>
             </div>
         </div>
 
