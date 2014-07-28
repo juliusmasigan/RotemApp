@@ -2,88 +2,35 @@
 
 class UserController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+	public function login()
 	{
-		//
+		print_r(User::all());exit;
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function register()
 	{
-		//
-	}
+		$inputs = Input::all();
 
+		$student_attr = array();
+		$student;
+		if(strtolower($inputs['userType']) == "student") {
+			$student_attr['first_name'] = $inputs['firstName'];
+			$student_attr['last_name'] = $inputs['lastName'];
+			$student_attr['email'] = $inputs['email'];
+			$student_attr['contact_number'] = $inputs['mNumber'];
+			$student_attr['parents_name'] = $inputs['parentsName'];
+			$student = Student::create($student_attr);
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+			print_r($student);exit;
+			$student->save();
+		}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-	public function login($args) {
-		
+		User::create(array(
+			'username' => $inputs['username'],
+			'password' => md5($inputs['password']),
+			'user_type' => strtolower($inputs['userType']),
+			'user_entity_id' => $student->id
+		));
 	}
 
 }
