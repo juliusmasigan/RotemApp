@@ -17,7 +17,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <span>User!</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="profile.php">My Profile</a></li>
+                <li><a href="profile">My Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Log out</a></li>
