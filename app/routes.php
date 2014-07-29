@@ -26,10 +26,10 @@ Route::post('login', 'UserController@login');
 
 Route::get('register', function()
 {
-	return View::make('users.register');
+	return View::make('admin.register');
 });
 
-Route::post('register', 'UserController@register');
+Route::post('register', 'AdminController@register');
 
 Route::get('dashboard', function()
 {
