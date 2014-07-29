@@ -8,12 +8,12 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>Skill Quest - Welcome!</title>
-    <base href="http://skillquest.eu1.frbit.net">
+    <!--base href="http://skillquest.eu1.frbit.net"-->
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+	<?php echo HTML::style('css/bootstrap.css'); ?>
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php echo HTML::style('css/style.css'); ?>
 
   </head>
 
