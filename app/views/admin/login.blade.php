@@ -6,11 +6,11 @@
     <div class="container wrap">
 
 
-        <div class="wrap-login">    
+        <div class="wrap-login">
             {{Form::open(array('url' => "/login", 'method' => "post", 'class' => "section form-login")) }}
             <h2 class="form-login-heading">Log in</h2>
             <br>
-            {{ Form::text('username', Input::has('email')?Input::old('email'):null, array('class' => "form-control", 'placeholder' => "Username")) }}
+            {{ Form::text('username', Input::old('email')?Input::old('email'):null, array('class' => "form-control", 'placeholder' => "Username")) }}
             <br>
             {{ Form::password('password', array('class' => "form-control", 'placeholder' => "Password")) }}
             
