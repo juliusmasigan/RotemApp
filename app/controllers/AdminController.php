@@ -68,7 +68,7 @@ class AdminController extends \BaseController {
 			'number_students' => $posts['numberStudents'],
 		));
 
-        $administrator->insert(array(
+        $admin_id = $administrator->insertGetId(array(
             'domain' => $posts['domain'],
             'contact_number' => $posts['phone'],
 			'institution_id' => $institution_id,
@@ -77,7 +77,26 @@ class AdminController extends \BaseController {
 			'password' => md5($posts['password']),
         ));
 
-		return Redirect::to('login')->withInput(Input::only('email'));
+		Session::put('uid', $admin_id);
+		Session::push('user.name', $posts['fullName']);
+		return Redirect::to('dashboard');
+	}
+
+	public function login() {
+		$posts = Input::all();
+
+		$admin = Administrator::where('email', $posts['username'])->where('password', md5($posts['password']))->first();
+
+		//Set a session.
+		Session::put('uid', $admin->id);
+		Session::push('user.name', $admin->full_name);
+		return Redirect::to('dashboard');
+	}
+
+	public function logout() {
+		Session::flush();
+
+		return Redirect::to('/');
 	}
 
 }
