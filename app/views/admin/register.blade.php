@@ -17,7 +17,7 @@
             <h2 class="form-register-heading">Register</h2>
             {{ Form::text('fullName', null, array('class' => "form-control", 'placeholder' => "Full Name", 'required')) }}
             {{ Form::text('email', null, array('class' => "form-control", 'placeholder' => "Email", 'required')) }}
-            {{ Form::text('password', null, array('class' => "form-control", 'placeholder' => "Password", 'required')) }}
+            {{ Form::password('password', array('class' => "form-control", 'placeholder' => "Password", 'required')) }}
             <br>
 
 			{{ Form::hidden('institution', Input::old('institution')) }}
