@@ -30,6 +30,7 @@ Route::get('register', function()
 });
 
 Route::post('register', 'AdminController@register');
+Route::post('pre_register', 'AdminController@pre_register');
 
 Route::get('dashboard', function()
 {
