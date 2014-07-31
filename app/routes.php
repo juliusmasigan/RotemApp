@@ -13,9 +13,12 @@
 
 Route::get('/', function()
 {
-	return View::make('admin.login');
+	if(!Session::has('uid')) {
+		return View::make('admin.login');
+	}else {
+		return Redirect::route('dashboard');
+	}
 });
-
 
 Route::get('login', function()
 {
@@ -24,18 +27,31 @@ Route::get('login', function()
 
 Route::post('login', 'AdminController@login');
 
+Route::get('logout', 'AdminController@logout');
+
 Route::get('register', function()
 {
 	return View::make('admin.register');
 });
 
 Route::post('register', 'AdminController@register');
+
 Route::post('post_register', 'AdminController@post_register');
 
-Route::get('dashboard', function()
+Route::get('teachers/register', function()
 {
-	return View::make('dashboard');
+	return View::make('teacher.register');
 });
+
+Route::post('teacher/register', 'TeacherController@register');
+
+Route::get('dashboard', array('as' => 'dashboard', function()
+{
+	if(!Session::has('uid'))
+		return Redirect::to('/');
+
+	return View::make('admin.dashboard', array('page' => 'dashboard'));	
+}));
 
 Route::get('reports', function()
 {
