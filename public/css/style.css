@@ -51,6 +51,11 @@ footer {
   background-color: #f5f5f5;
 }
 
+div.alert {
+	margin:5px 10px;
+	background:#FF8888;
+	border:solid 2px #FF7777;
+}
 
 
 /*GLOBAL*/
