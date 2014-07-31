@@ -13,16 +13,16 @@
 
 Route::get('/', function()
 {
-	return View::make('users.login');
+	return View::make('admin.login');
 });
 
 
 Route::get('login', function()
 {
-	return View::make('login');
+	return View::make('admin.login');
 });
 
-Route::post('login', 'UserController@login');
+Route::post('login', 'AdminController@login');
 
 Route::get('register', function()
 {
@@ -30,7 +30,7 @@ Route::get('register', function()
 });
 
 Route::post('register', 'AdminController@register');
-Route::post('pre_register', 'AdminController@pre_register');
+Route::post('post_register', 'AdminController@post_register');
 
 Route::get('dashboard', function()
 {
