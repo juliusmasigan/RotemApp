@@ -2,10 +2,10 @@
 
 class AdminController extends \BaseController {
 
-	public function pre_register()
+	public function register()
 	{
 		$posts = Input::all();
-		
+	
 		$rules = array(
 			'institution' => 'required',
 			'phone' => 'required|numeric'
@@ -13,28 +13,71 @@ class AdminController extends \BaseController {
 		$validator = Validator::make($posts, $rules);
 		$validator->setAttributeNames(array(
 			'institution' => "Institution",
-			'phone' => "Phone Number"
+			'phone' => "Phone number"
 		));
-		if($validator->fails()) {
-			return Redirect::to('register')->withErrors($validator)->withInput($posts);
+
+		//Check if instituion already exists.
+		$institution = Institution::where('name', $posts['institution'])->get();
+
+		if($validator->fails() || count($institution)) {
+			$errors = $validator->errors();
+			if(count($institution)) {
+				$errors->add('institution', 'The Institution is already registered.');
+			}
+			return Redirect::to('register')->withErrors($errors)->withInput($posts);
 		}
 
-		//Session::flash('pre_register_data', $posts);
 		return Redirect::to('register')->with('pre_registration', true)->withInput($posts);
-
-		//New Administator model instance.
-		/*$administrator = new Administrator;
-
-		$record = $administrator->insert(array(
-			'domain' => $posts['domain'],
-			'contact_number' => $posts['phone'],
-		));*/
 	}
 
-	public function register()
+	public function post_register()
 	{
 		$posts = Input::all();
-		print_r($posts);
+
+		$rules = array(
+			'email' => 'required|email',
+			'fullName' => 'required',
+			'password' => 'required'
+		);
+		$validator = Validator::make($posts, $rules);
+		$validator->setAttributeNames(array(
+			'email' => 'Email',
+			'fullName' => 'Full name',
+			'password' => 'Password'
+		));
+
+		//Check if email is already registered.
+		$administrator = Administrator::where('email', $posts['email'])->get();
+
+		if($validator->fails() || count($administrator)) {
+			$errors = $validator->errors();
+			if(count($administrator)) {
+				$errors->add('email', 'The Email is already registered.');
+			}
+			return Redirect::to('register')->withErrors($errors)->withInput($posts)->with('pre_registration', true);
+		}
+
+		//New Administator model instance.
+        $administrator = new Administrator;
+
+		//New Institution model instance.
+		$institution = new Institution;
+
+		$institution_id = $institution->insertGetId(array(
+			'name' => $posts['institution'],
+			'number_students' => $posts['numberStudents'],
+		));
+
+        $administrator->insert(array(
+            'domain' => $posts['domain'],
+            'contact_number' => $posts['phone'],
+			'institution_id' => $institution_id,
+			'email' => $posts['email'],
+			'full_name' => $posts['fullName'],
+			'password' => md5($posts['password']),
+        ));
+
+		return Redirect::to('login')->withInput(Input::only('email'));
 	}
 
 }
