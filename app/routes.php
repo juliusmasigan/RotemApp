@@ -38,13 +38,6 @@ Route::post('register', 'AdminController@register');
 
 Route::post('post_register', 'AdminController@post_register');
 
-Route::get('teachers/register', function()
-{
-	return View::make('teacher.register');
-});
-
-Route::post('teacher/register', 'TeacherController@register');
-
 Route::get('dashboard', array('as' => 'dashboard', function()
 {
 	if(!Session::has('uid'))
@@ -52,6 +45,17 @@ Route::get('dashboard', array('as' => 'dashboard', function()
 
 	return View::make('admin.dashboard', array('page' => 'dashboard'));	
 }));
+
+
+Route::get('teachers/register', function()
+{
+    return View::make('teacher.register');
+});
+
+Route::post('teacher/register', 'TeacherController@register');
+
+
+
 
 Route::get('reports', function()
 {
