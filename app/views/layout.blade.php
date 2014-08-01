@@ -10,7 +10,7 @@
     <title>Skill Quest - Welcome!</title>
     <!--base href="http://skillquest.eu1.frbit.net"-->
     <!-- Bootstrap core CSS -->
-	<?php echo HTML::style('css/bootstrap.min.css'); ?>
+	<?php echo HTML::style('css/bootstrap.css'); ?>
 
     <!-- Custom styles for this template -->
     <?php echo HTML::style('css/style.css'); ?>
@@ -23,11 +23,15 @@
   </head>
 
   <body>
-    @include('header')
+	@if(Session::has('uid'))
+		@include('header-li')
+	@else
+    	@include('header')
+	@endif
 	@include('messages-bar')
-	<div id='content'>
+	
  	@yield('body-section')
-	</div>
+	
 	@include('footer')
   </body>
 

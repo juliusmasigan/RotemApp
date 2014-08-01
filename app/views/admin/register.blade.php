@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('body-section')
+<div id="content">
 
 @if(!Session::has('pre_registration'))
 {{ Form::open(array('url' => "/register", 'method' => "POST", 'class' => "section form-register")) }}
@@ -30,5 +31,5 @@
 
 
 
-
+</div>
 @stop

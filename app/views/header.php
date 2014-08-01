@@ -1,6 +1,6 @@
 <div class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+	<div class="container">
+		<div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Menu</span>
             <span class="icon-bar"></span>
@@ -15,5 +15,5 @@
             <li><a href="/register">Register New Account</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </div>
+	</div>
+</div>
