@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2014 at 12:00 PM
+-- Generation Time: Aug 01, 2014 at 12:34 PM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.3
 
@@ -114,14 +114,13 @@ CREATE TABLE IF NOT EXISTS `students` (
 --
 
 CREATE TABLE IF NOT EXISTS `teachers` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `middle_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+`id` int(11) NOT NULL,
+  `full_name` varchar(500) NOT NULL,
   `contact_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` varchar(500) NOT NULL,
   `status` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -181,6 +180,12 @@ ALTER TABLE `students`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -219,6 +224,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
