@@ -28,7 +28,8 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	//'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +55,8 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	//'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'info@skillquest.com', 'name' => 'Skillquest'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +82,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'testskillquest',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +95,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => 'skillquest',
 
 	/*
 	|--------------------------------------------------------------------------
