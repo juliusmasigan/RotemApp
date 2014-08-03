@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/jquery.simple.lightbox.css">
-    <title>Skill Quest - Register</title>
-    <base href="http://skillquest.eu1.frbit.net">    
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+@extends('layout')
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    
-  </head>
-
-  <body>
-    <?php $page = "profile"; ?>
-    <?php include('header-li.php');?>
+@section('body-section')
     <div class="clear"></div>
     <div class="container wrap">
 
-        <?php include('navbar.php');?>
+        @include('navbar')
         
         <div class="row">
             <div class="col-sm-3">
@@ -32,7 +13,7 @@
                         <div class="col-sm-12 col-xs-4">
                         <div class="profile-defaultimage">
                         <img src="images/dpsample.png">
-                        </div>
+                    </div>
                         
                     </div>
                     <div class="col-sm-12 col-xs-8">
@@ -96,12 +77,6 @@
         </div>
 
     </div><!-- /.container -->
-    <?php include('createMessage.php');?>
-    <?php include('footer.php');?>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
+    @include('createMessage')
 
-
-</body></html>
+@stop
