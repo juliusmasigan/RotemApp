@@ -4,7 +4,7 @@
     <div class="clear"></div>
     <div class="container wrap">
 
-        @include('navbar.php')
+        @include('navbar')
 
 
         <div class="row">
