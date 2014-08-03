@@ -32,7 +32,7 @@ class TeacherController extends \BaseController {
 				$errors->add('email', 'The Email is already registered.');
 			}
 
-			return Redirect::to('teachers/register')->withErrors($errors)->withInput($posts);
+			return Redirect::to('teacher/register')->withErrors($errors)->withInput($posts);
 		}
 
 		//Generate random verification code.
@@ -58,13 +58,50 @@ class TeacherController extends \BaseController {
 			'status' => 'pending',
 		));
 
+		//Generate confirmation link.
+		$confirm_link = Registration::confirm_link(array(
+			'email' => $posts['email'], 
+			'password' => md5($posts['password']),
+			'code' => $ver_code,
+		), 'teacher');
+
 		//Send a confirmation email.
-		Mail::send('email.registration', array(), function($message) use($posts) {
+		Mail::send('email.registration', array('link' => $confirm_link), function($message) use($posts) {
 			$message->to($posts['email'], $posts['fullName']);
 			$message->subject('Skillquest Registration Confirmation');
 		});
 
 		return Redirect::to('/');
+	}
+
+	public function confirm() {
+		$posts = Input::all();
+
+		//Get the user's record.
+		$teacher = Teacher::where('email', $posts['user'])->first();
+
+		if(is_null($teacher)) {
+			$error['user'] = "The user is not yet registered in the system.";
+			return Redirect::to("teacher/confirm/{$posts['user']}/{$posts['key']}")->withInput($posts)->withErrors($error);
+		}
+		
+		//Get the registration confirmation code.
+		$registration = Registration::where('user_id', $teacher->id)
+			->where('registration_type', 'teacher')->where('verification_code', $posts['verification_code'])->first();
+
+		$sys_key = md5($teacher->email."-".$posts['verification_code']."-".$teacher->password);
+        $key = $posts['key'];
+
+		if(is_null($registration) || ($sys_key != $key)) {
+			$error['user'] = "The verification code is invalid.";
+            return Redirect::to("teacher/confirm/{$posts['user']}/{$posts['key']}")->withInput($posts)->withErrors($error);
+		}
+
+		//Update the status of the registration to 'approval'.
+		$registration->status = 'approval';
+		$registration->save();
+
+		return Redirect::to("/");
 	}
 
 }
