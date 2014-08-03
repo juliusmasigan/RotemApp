@@ -47,12 +47,37 @@ Route::get('dashboard', array('as' => 'dashboard', function()
 }));
 
 
-Route::get('teachers/register', function()
+
+Route::get('teacher/register', function()
 {
     return View::make('teacher.register');
 });
 
 Route::post('teacher/register', 'TeacherController@register');
+
+Route::get('teacher/confirm/{user}/{key}', function($user, $key)
+{
+	return View::make('teacher.confirm', array('user' => $user, 'key' => $key));
+});
+
+Route::post('teacher/confirm', 'TeacherController@confirm');
+
+
+
+
+Route::get('student/register', function()
+{
+    return View::make('student.register');
+});
+
+Route::post('student/register', 'StudentController@register');
+
+Route::get('student/confirm/{user}/{key}', function($user, $key)
+{
+    return View::make('student.confirm', array('user' => $user, 'key' => $key));
+});
+
+Route::post('student/confirm', 'StudentController@confirm');
 
 
 
