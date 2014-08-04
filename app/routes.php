@@ -84,17 +84,17 @@ Route::post('student/confirm', 'StudentController@confirm');
 
 Route::get('reports', function()
 {
-	return View::make('reports');
+	return View::make('reports', array('page' => 'reports'));
 });
 
 Route::get('messages', function()
 {
-	return View::make('messages');
+	return View::make('messages', array('page' => 'messages'));
 });
 
 Route::get('media', function()
 {
-	return View::make('media');
+	return View::make('media', array('page' => 'media'));
 });
 
 Route::get('forgotPassword', function()
@@ -104,5 +104,10 @@ Route::get('forgotPassword', function()
 
 Route::get('alerts', function()
 {
-	return View::make('alerts');
+	return View::make('alerts', array('page' => 'alerts'));
+});
+
+Route::get('profile', function()
+{
+    return View::make('profile', array('page' => 'profile'));
 });
