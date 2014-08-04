@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2014 at 12:34 PM
+-- Generation Time: Aug 04, 2014 at 06:37 AM
 -- Server version: 5.5.37-0ubuntu0.13.10.1
--- PHP Version: 5.5.3-1ubuntu2.3
+-- PHP Version: 5.5.3-1ubuntu2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   `institution_id` int(11) NOT NULL,
   `domain` varchar(1000) NOT NULL,
   `password` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `institutions` (
 `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `number_students` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `registration_type` varchar(255) NOT NULL,
   `verification_code` varchar(255) NOT NULL,
   `status` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -97,15 +97,14 @@ CREATE TABLE IF NOT EXISTS `registrations` (
 
 CREATE TABLE IF NOT EXISTS `students` (
 `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `middle_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+  `full_name` varchar(500) NOT NULL,
   `contact_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` varchar(500) NOT NULL,
   `parents_id` int(11) NOT NULL,
   `status` varchar(45) NOT NULL,
   `class_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -120,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `teachers` (
   `email` varchar(255) NOT NULL,
   `password` varchar(500) NOT NULL,
   `status` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -199,7 +198,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `administrators`
 --
 ALTER TABLE `administrators`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `classes`
 --
@@ -209,7 +208,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `institutions`
 --
 ALTER TABLE `institutions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `parents`
 --
@@ -219,17 +218,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `registrations`
 --
 ALTER TABLE `registrations`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
