@@ -66,7 +66,7 @@ class TeacherController extends \BaseController {
 		), 'teacher');
 
 		//Send a confirmation email.
-		Mail::send('email.registration', array('link' => $confirm_link), function($message) use($posts) {
+		Mail::send('email.registration', array('link' => $confirm_link, 'verification_code' => $ver_code), function($message) use($posts) {
 			$message->to($posts['email'], $posts['fullName']);
 			$message->subject('Skillquest Registration Confirmation');
 		});
