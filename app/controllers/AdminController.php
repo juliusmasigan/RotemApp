@@ -79,6 +79,7 @@ class AdminController extends \BaseController {
 
 		Session::put('uid', $admin_id);
 		Session::push('user.name', $posts['fullName']);
+		Session::push('user.type', 'admin');
 		return Redirect::to('dashboard');
 	}
 
@@ -90,13 +91,8 @@ class AdminController extends \BaseController {
 		//Set a session.
 		Session::put('uid', $admin->id);
 		Session::push('user.name', $admin->full_name);
+		Session::push('user.type', 'admin');
 		return Redirect::to('dashboard');
-	}
-
-	public function logout() {
-		Session::flush();
-
-		return Redirect::to('/');
 	}
 
 }
