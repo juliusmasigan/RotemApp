@@ -101,7 +101,24 @@ class TeacherController extends \BaseController {
 		$registration->status = 'approval';
 		$registration->save();
 
-		return Redirect::to("/");
+		return Redirect::to("teacher/login");
+	}
+
+	public function login() {
+		$posts = Input::all();
+	
+		$teacher = Teacher::where('email', $posts['username'])->where('password', md5($posts['password']))->first();
+
+		if(is_null($teacher)) {
+			$errors['credentials'] = "Invalid username or password.";
+			return Redirect::to("teacher/login")->withInput($posts)->withErrors($errors);
+		}
+
+		//Set session if verified user.
+		Session::put('uid', $teacher->id);
+		Session::push('user.name', $teacher->full_name);
+		Session::push('user.type', 'teacher');
+		return Redirect::to("dashboard");
 	}
 
 }

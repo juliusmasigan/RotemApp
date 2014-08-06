@@ -101,7 +101,24 @@ class StudentController extends \BaseController {
 		$registration->status = 'approval';
 		$registration->save();
 
-		return Redirect::to("/");
+		return Redirect::to("student/login");
+	}
+
+	public function login() {
+		$posts = Input::all();
+	
+		$student = Student::where('email', $posts['username'])->where('password', md5($posts['password']))->first();
+
+		if(is_null($student)) {
+			$errors['credentials'] = "Invalid username or password.";
+			return Redirect::to("student/login")->withInput($posts)->withErrors($errors);
+		}
+
+		//Set session if verified user.
+		Session::put('uid', $student->id);
+		Session::push('user.name', $student->full_name);
+		Session::push('user.type', 'student');
+		return Redirect::to("dashboard");
 	}
 
 }
