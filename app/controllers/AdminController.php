@@ -95,4 +95,13 @@ class AdminController extends \BaseController {
 		return Redirect::to('dashboard');
 	}
 
+	public function list_students() {
+		//Get all the list of students and their registration status.
+		$students = Student::with(array('registration' => function($a) {
+			$a->where('registration_type', 'student');
+		}))->get();
+
+		return View::make('admin.students', array('students' => $students, 'page' => 'students'));
+	}
+
 }

@@ -12,5 +12,9 @@
                   <li><a href="#">View All Events</a></li>
                 </ul></li>
           <li class="<?php echo ($page == "alerts" ? "active" : "")?>"><a href="#">Alerts</a></li>
+		  @if(Session::get('user.type')[0] == 'admin')
+		  <li class="<?php echo ($page == "staffs" ? "active" : "")?>"><a href="staffs">Staffs</a></li>
+		  <li class="<?php echo ($page == "students" ? "active" : "")?>"><a href="students">Students</a></li>
+		  @endif
         </ul>
 </div>

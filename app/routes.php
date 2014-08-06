@@ -60,6 +60,9 @@ Route::get('dashboard', array('as' => 'dashboard', function()
 		return View::make('student.dashboard', array('page' => 'dashboard'));
 }));
 
+Route::get('students', 'AdminController@list_students');
+
+
 
 
 Route::get('teacher/register', function()
