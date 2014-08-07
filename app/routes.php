@@ -62,6 +62,8 @@ Route::get('dashboard', array('as' => 'dashboard', function()
 
 Route::get('students', 'AdminController@list_students');
 
+Route::get('teachers', 'AdminController@list_teachers');
+
 
 
 
@@ -86,6 +88,10 @@ Route::get('teacher/login', function()
 
 Route::post('teacher/login', 'TeacherController@login');
 
+Route::get('teacher/{id}', 'TeacherController@view');
+
+Route::get('teacher/approve/{id}', 'TeacherController@approve');
+
 
 
 
@@ -109,6 +115,10 @@ Route::get('student/login', function()
 });
 
 Route::post('student/login', 'StudentController@login');
+
+Route::get('student/{id}', 'StudentController@view');
+
+Route::get('student/approve/{id}', 'StudentController@approve');
 
 
 
