@@ -6,4 +6,8 @@ class Teacher extends Eloquent {
 
 	public $incrementing = true;
 
+	public function registration() {
+		return $this->hasMany('Registration', 'user_id');
+	}
+
 }
