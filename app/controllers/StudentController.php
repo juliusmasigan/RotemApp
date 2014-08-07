@@ -107,11 +107,21 @@ class StudentController extends \BaseController {
 	public function login() {
 		$posts = Input::all();
 	
-		$student = Student::where('email', $posts['username'])->where('password', md5($posts['password']))->first();
+		$student = Student::with(array('registration' => function($q) {
+			$q->where('registration_type', 'student');
+		}))->where('email', $posts['username'])->where('password', md5($posts['password']))->first();
 
 		if(is_null($student)) {
 			$errors['credentials'] = "Invalid username or password.";
 			return Redirect::to("student/login")->withInput($posts)->withErrors($errors);
+		}elseif($student->registration[0]->status == "pending") {
+			return Redirect::to('student/login')->withInput($posts)->withErrors(array(
+				'account' => 'Account not yet verified.'
+			));
+		}elseif($student->registration[0]->status == "approval") {
+			return Redirect::to('student/login')->withInput($posts)->withErrors(array(
+				'account' => 'Account not yet approved.'
+			));
 		}
 
 		//Set session if verified user.
@@ -119,6 +129,22 @@ class StudentController extends \BaseController {
 		Session::push('user.name', $student->full_name);
 		Session::push('user.type', 'student');
 		return Redirect::to("dashboard");
+	}
+
+	public function view($id) {
+		//Get the record.
+		$student = Student::with(array('registration' => function($q) {
+			$q->where('registration_type', 'student');
+		}))->find($id);
+
+		return View::make('student.view', array('student' => $student, 'page' => 'students'));
+	}
+
+	public function approve($id) {
+		//Update the status of the registration.
+		Registration::where('user_id', $id)->where('registration_type', 'student')->update(array('status' => 'approved'));
+
+		return Redirect::to("student/{$id}");
 	}
 
 }

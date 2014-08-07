@@ -107,11 +107,21 @@ class TeacherController extends \BaseController {
 	public function login() {
 		$posts = Input::all();
 	
-		$teacher = Teacher::where('email', $posts['username'])->where('password', md5($posts['password']))->first();
+		$teacher = Teacher::with(array('registration' => function($q) {
+			$q->where('registration_type', 'teacher');
+		}))->where('email', $posts['username'])->where('password', md5($posts['password']))->first();
 
 		if(is_null($teacher)) {
 			$errors['credentials'] = "Invalid username or password.";
 			return Redirect::to("teacher/login")->withInput($posts)->withErrors($errors);
+		}elseif($teacher->registration[0]->status == "pending") {
+			return Redirect::to('teacher/login')->withInput($posts)->withErrors(array(
+				'account' => 'Account not yet verified.'
+			));
+		}elseif($teacher->registration[0]->status == "approval") {
+			return Redirect::to('teacher/login')->withInput($posts)->withErrors(array(
+				'account' => 'Account not yet approved.'
+			));
 		}
 
 		//Set session if verified user.
@@ -119,6 +129,22 @@ class TeacherController extends \BaseController {
 		Session::push('user.name', $teacher->full_name);
 		Session::push('user.type', 'teacher');
 		return Redirect::to("dashboard");
+	}
+
+	public function view($id) {
+		//Get the record.
+		$teacher = Teacher::with(array('registration' => function($q) {
+			$q->where('registration_type', 'teacher');
+		}))->find($id);
+
+		return View::make('teacher.view', array('teacher' => $teacher, 'page' => 'teachers'));
+	}
+
+	public function approve($id) {
+		//Update the status of the registration.
+		Registration::where('user_id', $id)->where('registration_type', 'teacher')->update(array('status' => 'approved'));
+
+		return Redirect::to("teacher/{$id}");
 	}
 
 }
