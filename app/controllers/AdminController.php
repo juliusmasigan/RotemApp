@@ -88,6 +88,12 @@ class AdminController extends \BaseController {
 
 		$admin = Administrator::where('email', $posts['username'])->where('password', md5($posts['password']))->first();
 
+		if(is_null($admin)) {
+			return Redirect::to("/")->withInput($posts)->withErrors(array(
+				'account' => 'Invalid username or password.'
+			));
+		}
+
 		//Set a session.
 		Session::put('uid', $admin->id);
 		Session::push('user.name', $admin->full_name);
@@ -102,6 +108,15 @@ class AdminController extends \BaseController {
 		}))->get();
 
 		return View::make('admin.students', array('students' => $students, 'page' => 'students'));
+	}
+
+	public function list_teachers() {
+		//Get all the list of teachers and their registration status.
+		$teachers = Teacher::with(array('registration' => function($a) {
+			$a->where('registration_type', 'teacher');
+		}))->get();
+
+		return View::make('admin.teachers', array('teachers' => $teachers, 'page' => 'teachers'));
 	}
 
 }
