@@ -7,7 +7,7 @@
 {{ Form::open(array('url' => "/register", 'method' => "POST", 'class' => "section form-register")) }}
             <h2 class="form-register-heading">Register</h2>
             {{ Form::text('institution', null, array('class' => "form-control", 'placeholder' => "Institution", 'required')) }}
-            {{ Form::text('domain', null, array('class' => "form-control", 'placeholder' => "company.skillquest.com")) }}
+            {{ Form::text('domain', null, array('class' => "form-control", 'placeholder' => "company.skillquest.com", 'disabled')) }}
             {{ Form::text('phone', null, array('class' => "form-control", 'placeholder' => "Phone", 'required')) }}
             {{ Form::text('numberStudents', null, array('class' => "form-control", 'placeholder' => "Number of Students")) }}
             <br>
@@ -20,16 +20,19 @@
             {{ Form::text('email', null, array('class' => "form-control", 'placeholder' => "Email", 'required')) }}
             {{ Form::password('password', array('class' => "form-control", 'placeholder' => "Password", 'required')) }}
             <br>
-
-			{{ Form::hidden('institution', Input::old('institution')) }}
-			{{ Form::hidden('domain', Input::old('domain')) }}
-			{{ Form::hidden('phone', Input::old('phone')) }}
-			{{ Form::hidden('numberStudents', Input::old('numberStudents')) }}
+		{{ Form::hidden('institution', Input::old('institution')) }}
+		{{ Form::hidden('domain', Input::old('domain')) }}
+		{{ Form::hidden('phone', Input::old('phone')) }}
+		{{ Form::hidden('numberStudents', Input::old('numberStudents')) }}
             {{ Form::submit('Submit', array('class' => 'btn btn-block btn-primary btn-lg')) }}
 {{ Form::close() }}
 @endif
-
-
-
 </div>
+
+<script>
+      $('.form-register input[name=institution]').on('blur', function(event) {
+            var institution = this.value;
+            $('.form-register input[name=domain]').val(institution + ".skillquest.com");
+      });
+</script>
 @stop
