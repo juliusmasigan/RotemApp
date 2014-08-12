@@ -55,7 +55,6 @@ class TeacherController extends \BaseController {
 			'user_id' => $teacher_id,
 			'registration_type' => 'teacher',
 			'verification_code' => $ver_code,
-			'status' => 'pending',
 		));
 
 		//Generate confirmation link.
@@ -98,7 +97,7 @@ class TeacherController extends \BaseController {
 		}
 
 		//Update the status of the registration to 'approval'.
-		$registration->status = 'approval';
+		$registration->status = 'pending';
 		$registration->save();
 
 		return Redirect::to("teacher/login");
@@ -114,11 +113,11 @@ class TeacherController extends \BaseController {
 		if(is_null($teacher)) {
 			$errors['credentials'] = "Invalid username or password.";
 			return Redirect::to("teacher/login")->withInput($posts)->withErrors($errors);
-		}elseif($teacher->registration[0]->status == "pending") {
+		}elseif(is_null($teacher->registration[0]->status)) {
 			return Redirect::to('teacher/login')->withInput($posts)->withErrors(array(
 				'account' => 'Account not yet verified.'
 			));
-		}elseif($teacher->registration[0]->status == "approval") {
+		}elseif($teacher->registration[0]->status == "pending") {
 			return Redirect::to('teacher/login')->withInput($posts)->withErrors(array(
 				'account' => 'Account not yet approved.'
 			));
