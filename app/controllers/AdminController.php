@@ -103,16 +103,26 @@ class AdminController extends \BaseController {
 
 	public function list_students() {
 		//Get all the list of students and their registration status.
-		$students = Student::join('registrations', 'students.id', '=', 'registrations.user_id')->whereNotNull('registrations.status', 'and', true)->where('registrations.registration_type', 'student')->get();
+		$students = DB::table('students as s')
+		->join('registrations as r', 's.id', '=', 'r.user_id')
+		->whereNotNull('r.status', 'and', true)
+		->where('r.registration_type', 'student')
+		->select('s.id as id', 'r.status as status', 's.full_name as full_name', 's.email as email')
+		->get();
 
 		return View::make('admin.students', array('students' => $students, 'page' => 'students'));
 	}
 
 	public function list_teachers() {
 		//Get all the list of teachers and their registration status.
-		$teachers = Teacher::join('registrations', 'teachers.id', '=', 'registrations.user_id')->whereNotNull('registrations.status', 'and', true)->where('registrations.registration_type', 'teacher')->get();
+		$teachers = DB::table('teachers as t')
+		->join('registrations as r', 't.id', '=', 'r.user_id')
+		->whereNotNull('r.status', 'and', true)
+		->where('r.registration_type', 'teacher')
+		->select('t.id as id', 'r.status as status', 't.full_name as full_name', 't.email as email')
+		->get();
 
-		return View::make('admin.teachers', array('teachers' => $teachers, 'page' => 'teachers'));
+		return View::make('admin.teachers', array('teachers' => $teachers, 'page' => 'staffs'));
 	}
 
 }
