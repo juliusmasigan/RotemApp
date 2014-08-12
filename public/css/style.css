@@ -276,3 +276,8 @@ padding: 10px 20px;
   display: none;
 }
 /*MESSAGES*
+
+/*TABLES*/
+.recordsTablewrap table td.status-col span.status-actions {
+	display:none;
+}
