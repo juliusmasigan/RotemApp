@@ -281,3 +281,9 @@ padding: 10px 20px;
 .recordsTablewrap table td.status-col span.status-actions {
 	display:none;
 }
+
+.recordsTablewrap tr {
+  -webkit-user-select: none; 
+  user-select: none; 
+  -moz-user-select: none;
+}
