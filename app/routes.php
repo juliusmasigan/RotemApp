@@ -92,6 +92,7 @@ Route::get('teacher/{id}', 'TeacherController@view');
 
 Route::get('teacher/approve/{id}', 'TeacherController@approve');
 
+Route::get('teacher/decline/{id}', 'TeacherController@decline');
 
 
 
@@ -119,6 +120,8 @@ Route::post('student/login', 'StudentController@login');
 Route::get('student/{id}', 'StudentController@view');
 
 Route::get('student/approve/{id}', 'StudentController@approve');
+
+Route::get('student/decline/{id}', 'StudentController@decline');
 
 
 
