@@ -29,7 +29,8 @@
 						<td class="status-col" width="200">
 							<span>{{ $teacher->status; }}</span>
 							<span class="status-actions">
-								{{ HTML::link("teacher/approve/{$teacher->id}", "Approve"); }} | {{ HTML::link("teacher/decline/{$teacher->id}", "Decline"); }}
+								{{ HTML::link("teacher/approve/{$teacher->id}", "Approve"); }} | 
+								{{ HTML::link("teacher/decline/{$teacher->id}", "Decline"); }}
 							</span>
 						</td>
 					</tr>
@@ -42,8 +43,10 @@
 
 <script>
 	$('.recordsTablewrap td.status-col').click(function(event) {
-		$(this).find('span:first').toggle();
-		$(this).find('span.status-actions').toggle();
+		if($(this).find('span:first').text() == "pending") {
+			$(this).find('span:first').toggle();
+			$(this).find('span.status-actions').toggle();
+		}
 	});
 </script>
 
