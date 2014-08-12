@@ -143,7 +143,14 @@ class StudentController extends \BaseController {
 		//Update the status of the registration.
 		Registration::where('user_id', $id)->where('registration_type', 'student')->update(array('status' => 'approved'));
 
-		return Redirect::to("student/{$id}");
+		return Redirect::to("students");
+	}
+
+	public function decline($id) {
+		//Update the status of the registration.
+		Registration::where('user_id', $id)->where('registration_type', 'student')->update(array('status' => NULL));
+
+		return Redirect::to('students');
 	}
 
 }

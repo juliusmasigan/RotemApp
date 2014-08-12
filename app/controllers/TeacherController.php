@@ -136,14 +136,21 @@ class TeacherController extends \BaseController {
 			$q->where('registration_type', 'teacher');
 		}))->find($id);
 
-		return View::make('teacher.view', array('teacher' => $teacher, 'page' => 'teachers'));
+		return View::make('teacher.view', array('teacher' => $teacher, 'page' => 'staffs'));
 	}
 
 	public function approve($id) {
 		//Update the status of the registration.
 		Registration::where('user_id', $id)->where('registration_type', 'teacher')->update(array('status' => 'approved'));
 
-		return Redirect::to("teacher/{$id}");
+		return Redirect::to("teachers");
+	}
+
+	public function decline($id) {
+		//Update the status of the registration.
+		Registration::where('user_id', $id)->where('registration_type', 'teacher')->update(array('status' => NULL));
+
+		return Redirect::to('teachers');
 	}
 
 }
