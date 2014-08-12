@@ -20,13 +20,18 @@
 				@foreach($teachers as $teacher)
 					<?php $row_class = ""; ?>
 					@if($teacher->status == "pending")
-					<?php $row_class = "info"; ?>
+					<?php $row_class = "warning"; ?>
 					@endif
 					<tr class="<?php echo $row_class; ?>">
 						<td>{{ $teacher->id; }}</td>
 						<td>{{ HTML::link("teacher/{$teacher->id}", $teacher->full_name); }}</td>
 						<td>{{ $teacher->email; }}</td>
-						<td>{{ $teacher->status; }}</td>
+						<td class="status-col" width="200">
+							<span>{{ $teacher->status; }}</span>
+							<span class="status-actions">
+								{{ HTML::link("teacher/approve/{$teacher->id}", "Approve"); }} | {{ HTML::link("teacher/decline/{$teacher->id}", "Decline"); }}
+							</span>
+						</td>
 					</tr>
 				@endforeach
 			<tbody>
@@ -34,5 +39,12 @@
 	</div>
 
 </div>
+
+<script>
+	$('.recordsTablewrap td.status-col').click(function(event) {
+		$(this).find('span:first').toggle();
+		$(this).find('span.status-actions').toggle();
+	});
+</script>
 
 @stop
