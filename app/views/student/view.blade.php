@@ -39,7 +39,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal-information">
-                            @if($student->registration[0]->status == "approval")
+                            @if($student->registration[0]->status == "pending")
                                 {{ Form::button('Approve', array('class' => 'btn btn-success', 'onclick' => 'javascript:location.href=\'/student/approve/'.$student->id.'\'')); }}
                             @endif
                         </div>
