@@ -103,18 +103,14 @@ class AdminController extends \BaseController {
 
 	public function list_students() {
 		//Get all the list of students and their registration status.
-		$students = Student::with(array('registration' => function($a) {
-			$a->where('registration_type', 'student');
-		}))->get();
+		$students = Student::join('registrations', 'students.id', '=', 'registrations.user_id')->whereNotNull('registrations.status', 'and', true)->where('registrations.registration_type', 'student')->get();
 
 		return View::make('admin.students', array('students' => $students, 'page' => 'students'));
 	}
 
 	public function list_teachers() {
 		//Get all the list of teachers and their registration status.
-		$teachers = Teacher::with(array('registration' => function($a) {
-			$a->where('registration_type', 'teacher');
-		}))->get();
+		$teachers = Teacher::join('registrations', 'teachers.id', '=', 'registrations.user_id')->whereNotNull('registrations.status', 'and', true)->where('registrations.registration_type', 'teacher')->get();
 
 		return View::make('admin.teachers', array('teachers' => $teachers, 'page' => 'teachers'));
 	}
