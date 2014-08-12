@@ -19,16 +19,14 @@
 			<tbody>
 				@foreach($teachers as $teacher)
 					<?php $row_class = ""; ?>
-					@if($teacher->registration[0]->status == "pending")
-					<?php $row_class = "warning"; ?>
-					@elseif($teacher->registration[0]->status == "approval")
+					@if($teacher->status == "pending")
 					<?php $row_class = "info"; ?>
 					@endif
 					<tr class="<?php echo $row_class; ?>">
 						<td>{{ $teacher->id; }}</td>
 						<td>{{ HTML::link("teacher/{$teacher->id}", $teacher->full_name); }}</td>
 						<td>{{ $teacher->email; }}</td>
-						<td>{{ $teacher->registration[0]->status; }}</td>
+						<td>{{ $teacher->status; }}</td>
 					</tr>
 				@endforeach
 			<tbody>
