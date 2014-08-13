@@ -35,7 +35,7 @@
 <script>
       $('.form-register input[name=institution]').on('blur', function(event) {
             var institution = this.value;
-            $('.form-register input[name=domain]').val(institution + ".skillquest.com");
+            $('.form-register input[name=domain]').val(institution);
       });
 </script>
 @stop
