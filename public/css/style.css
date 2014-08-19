@@ -281,7 +281,7 @@ padding: 10px 20px;
 #msg-edit-done, .msg-post-edit {
   display: none;
 }
-/*MESSAGES*
+/*MESSAGES*/
 
 /*TABLES*/
 .recordsTablewrap table td.status-col span.status-actions {
@@ -293,3 +293,16 @@ padding: 10px 20px;
   user-select: none; 
   -moz-user-select: none;
 }
+
+
+/* FORMS */
+form .multiselect {
+	text-align:left;
+}
+
+form .multiselect b.caret {
+	position:absolute;
+	top:14px;
+	right:8px;
+}
+/* FORMS */
