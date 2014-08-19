@@ -66,7 +66,6 @@ Route::get('teachers', 'AdminController@list_teachers');
 
 
 
-
 Route::get('teacher/register', function()
 {
     return View::make('teacher.register');
@@ -148,7 +147,14 @@ Route::get('forgotPassword', function()
 
 Route::get('alerts', function()
 {
-	return View::make('alerts', array('page' => 'alerts'));
+    if(!Session::has('uid'))
+        return Redirect::to('/');
+
+    if(Session::get('user.type')[0] == 'admin')
+        return View::make('admin.alerts', array('page' => 'alerts'));
+
+    if(Session::get('user.type')[0] == 'teacher')
+        return View::make('teacher.alerts', array('page' => 'alerts'));
 });
 
 Route::get('profile', function()
