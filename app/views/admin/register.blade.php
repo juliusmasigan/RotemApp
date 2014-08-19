@@ -7,7 +7,10 @@
 {{ Form::open(array('url' => "/register", 'method' => "POST", 'class' => "section form-register")) }}
             <h2 class="form-register-heading">Register</h2>
             {{ Form::text('institution', null, array('class' => "form-control", 'placeholder' => "Institution", 'required')) }}
-            {{ Form::text('domain', null, array('class' => "form-control", 'placeholder' => "company.skillquest.com", 'disabled')) }}
+            <div class="input-group">
+                  {{ Form::text('domain', null, array('class' => "form-control", 'placeholder' => "Sub Domain")) }}
+                  <span class="input-group-addon">.skillquest.com</span>
+            </div>
             {{ Form::text('phone', null, array('class' => "form-control", 'placeholder' => "Phone", 'required')) }}
             {{ Form::text('numberStudents', null, array('class' => "form-control", 'placeholder' => "Number of Students")) }}
             <br>
@@ -32,7 +35,7 @@
 <script>
       $('.form-register input[name=institution]').on('blur', function(event) {
             var institution = this.value;
-            $('.form-register input[name=domain]').val(institution + ".skillquest.com");
+            $('.form-register input[name=domain]').val(institution);
       });
 </script>
 @stop

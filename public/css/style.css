@@ -131,6 +131,12 @@ background: #FFF;
 .form-login .form-control:focus {
   z-index: 2;
 }
+.form-register .input-group {
+  margin-bottom: 10px;
+}
+.form-register .input-group .form-control {
+  margin-bottom: 0px;
+}
 .form-login input[type="email"],
 .form-register input[type="email"],
 .form-register input[type="text"] {

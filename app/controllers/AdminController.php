@@ -69,7 +69,7 @@ class AdminController extends \BaseController {
 		));
 
         $admin_id = $administrator->insertGetId(array(
-            'domain' => $posts['domain'],
+            'domain' => $posts['domain'].".skillquest.com",
             'contact_number' => $posts['phone'],
 			'institution_id' => $institution_id,
 			'email' => $posts['email'],
