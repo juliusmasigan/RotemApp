@@ -6,4 +6,8 @@ class Classes extends Eloquent {
 
 	public $incrementing = true;
 
+	public function student() {
+		return $this->hasMany('Student');
+	}
+
 }

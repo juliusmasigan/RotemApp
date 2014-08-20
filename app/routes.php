@@ -145,23 +145,7 @@ Route::get('forgotPassword', function()
 	return View::make('forgotPassword');
 });
 
-Route::get('alerts', function()
-{
-    if(!Session::has('uid'))
-        return Redirect::to('/');
-
-    $classes = array();
-    $tmp_classes = Classes::get();
-    foreach ($tmp_classes as $class) {
-    	$classes[$class->id] = $class->name;
-    }
-
-    if(Session::get('user.type')[0] == 'admin')
-        return View::make('admin.alerts', array('page' => 'alerts', 'classes' => $classes));
-
-    if(Session::get('user.type')[0] == 'teacher')
-        return View::make('teacher.alerts', array('page' => 'alerts', 'classes' => $classes));
-});
+Route::get('alerts', 'AlertController@page_index');
 
 Route::post('alerts', 'AlertController@post');
 
