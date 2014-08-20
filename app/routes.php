@@ -150,12 +150,20 @@ Route::get('alerts', function()
     if(!Session::has('uid'))
         return Redirect::to('/');
 
+    $classes = array();
+    $tmp_classes = Classes::get();
+    foreach ($tmp_classes as $class) {
+    	$classes[$class->id] = $class->name;
+    }
+
     if(Session::get('user.type')[0] == 'admin')
-        return View::make('admin.alerts', array('page' => 'alerts'));
+        return View::make('admin.alerts', array('page' => 'alerts', 'classes' => $classes));
 
     if(Session::get('user.type')[0] == 'teacher')
-        return View::make('teacher.alerts', array('page' => 'alerts'));
+        return View::make('teacher.alerts', array('page' => 'alerts', 'classes' => $classes));
 });
+
+Route::post('alerts', 'AlertController@post');
 
 Route::get('profile', function()
 {
