@@ -306,3 +306,10 @@ form .multiselect b.caret {
 	right:8px;
 }
 /* FORMS */
+
+
+/* ALERT PAGE */
+.alert-page .class-multiselect {
+	display:none;
+}
+/* ALERT PAGE */
