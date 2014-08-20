@@ -17,11 +17,17 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2">Choose Recipient</label>
 					<div class="col-sm-8">
-						{{ Form::select('recipient', array('all' => 'Select All', 'teachers' => 'Select Teachers', 
+						{{ Form::select('recipient[]', array('teachers' => 'Select Teachers', 
 						'students' => 'Select Students'), null, 
 						array('class' => 'multiselect form-control', 'multiple' => 'multiple')); }}
 					</div>
 				</div>
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        {{ Form::select('class[]', $classes, null, 
+                        array('class' => 'multiselect form-control', 'multiple' => 'multiple')); }}
+                    </div>
+                </div>
 				<div class="form-group">
                     <label class="control-label col-sm-2">Message</label>
                     <div class="col-sm-8">
@@ -32,7 +38,7 @@
                     <label class="control-label col-sm-2">Mode</label>
                     <div class="col-sm-8">
 						<label class="radio-inline">
-							{{ Form::radio('mode', 'email'); }} By Email
+							{{ Form::radio('mode', 'email', true); }} By Email
 						</label>
 						<label class="radio-inline">
                             {{ Form::radio('mode', 'sms'); }} By SMS
@@ -53,7 +59,7 @@
     @include('createMessage')
 
 <script>
-	$('.multiselect').multiselect({buttonWidth:'300px'});
+	$('.multiselect').multiselect({buttonWidth:'300px', includeSelectAllOption:true});
 </script>
 
 @stop
