@@ -33,7 +33,7 @@
 				<div class="form-group">
                     <label class="control-label col-sm-2">Message</label>
                     <div class="col-sm-8">
-						{{ Form::textarea('message', null, array('class' => 'form-control')); }}
+						{{ Form::textarea('message', null, array('class' => 'form-control', 'placeholder' => 'Enter your message here')); }}
                     </div>
                 </div>
 				<div class="form-group">
