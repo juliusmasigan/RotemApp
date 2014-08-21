@@ -9,6 +9,8 @@ class AlertController extends \BaseController {
 		$classes = array();
 		$tmp_classes = DB::table('classes as c')
 		->join('students as s', 's.class_id', '=', 'c.id')
+		->join('registrations as r', 'r.user_id', '=', 's.id')
+		->where('r.status', 'approved')
 		->whereNotNull('s.class_id', 'and', true)
 		->select('c.name', 'c.id')
 		->distinct()
@@ -53,6 +55,8 @@ class AlertController extends \BaseController {
 
 		if($posts['mode']=='email') {
 			$this->postByEmail(array('message' => $posts['message'], 'recipients' => $recipients));
+		}else if($posts['mode']=='sms') {
+
 		}
 
 		return Redirect::to('alerts');
@@ -71,12 +75,12 @@ class AlertController extends \BaseController {
 
 		//Alert email template for teachers
 		if(isset($params['recipients']['teachers'])) {
-			/*Mail::send('email.alert', array('msg' => $params['message']), function($message) use($params){
-                foreach($params['recipients']['teachers'] as $recipient) {
+			foreach($params['recipients']['teachers'] as $recipient) {
+				Mail::send('email.alert', array('msg' => $params['message']), function($message) use($recipient){
                     $message->to($recipient->email, $recipient->full_name);
-                }
-                $message->subject('SkillQuest Alerts');
-            });*/
+                	$message->subject('SkillQuest Alerts');
+            	});
+            }
         }
 	}
 
