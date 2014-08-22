@@ -2,6 +2,10 @@
 
 class AlertController extends \BaseController {
 
+	protected $twilioSid = "ACc085382b3a0eeb6dc732095f7c8d23dd";
+	protected $twilioToken = "0f76b6c2077df68d0bf141c8cd9dd244";
+	protected $sender = "267-244-8984";
+
 	public function page_index() {
 		if(!Session::has('uid'))
         return Redirect::to('/');
@@ -56,7 +60,7 @@ class AlertController extends \BaseController {
 		if($posts['mode']=='email') {
 			$this->postByEmail(array('message' => $posts['message'], 'recipients' => $recipients));
 		}else if($posts['mode']=='sms') {
-
+			$this->postBySms(array('message' => $posts['message'], 'recipients' => $recipients));
 		}
 
 		return Redirect::to('alerts');
@@ -82,6 +86,24 @@ class AlertController extends \BaseController {
             	});
             }
         }
+	}
+
+	private function postBySms($params) {
+		$twilio = new Services_Twilio($this->twilioSid, $this->twilioToken);
+
+		//SMS template for students
+		if(isset($params['recipients']['students'])) {
+			foreach($params['recipients']['students'] as $recipient) {
+				$sms = $twilio->account->messages->sendMessage($this->sender, $recipient->contact_number, $params['message']);
+			}
+		}
+
+		//SMS template for teachers
+		if(isset($params['recipients']['teachers'])) {
+			foreach($params['recipients']['teachers'] as $recipient) {
+				$sms = $twilio->account->messages->sendMessage($this->sender, $recipient->contact_number, $params['message']);
+			}
+		}
 	}
 
 }
