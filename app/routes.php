@@ -50,13 +50,16 @@ Route::get('dashboard', array('as' => 'dashboard', function()
 	if(!Session::has('uid'))
 		return Redirect::to('/');
 
-	if(Session::get('user.type')[0] == 'admin')
+	$user_type_arr = Session::get('user.type');
+	
+
+	if($user_type_arr[0] == 'admin')
 		return View::make('admin.dashboard', array('page' => 'dashboard'));
 
-	if(Session::get('user.type')[0] == 'teacher')
+	if($user_type_arr[0] == 'teacher')
 		return View::make('teacher.dashboard', array('page' => 'dashboard'));
 
-	if(Session::get('user.type')[0] == 'student')
+	if($user_type_arr[0] == 'student')
 		return View::make('student.dashboard', array('page' => 'dashboard'));
 }));
 
