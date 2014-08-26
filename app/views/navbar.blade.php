@@ -10,11 +10,14 @@
                 <ul class="dropdown-menu">
                   <li><a href="#">Post an Event</a></li>
                   <li><a href="#">View All Events</a></li>
-                </ul></li>
+                </ul>
+          </li>
+          @if(Session::get('user.type') != 'student') {
           <li class="<?php echo ($page == "alerts" ? "active" : "")?>"><a href="/alerts">Alerts</a></li>
-		  @if(Session::get('user.type')[0] == 'admin')
-		  <li class="<?php echo ($page == "staffs" ? "active" : "")?>"><a href="/teachers">Staffs</a></li>
-		  <li class="<?php echo ($page == "students" ? "active" : "")?>"><a href="/students">Students</a></li>
-		  @endif
+          }
+    		  @if(Session::get('user.type')[0] == 'admin')
+    		  <li class="<?php echo ($page == "staffs" ? "active" : "")?>"><a href="/teachers">Staffs</a></li>
+    		  <li class="<?php echo ($page == "students" ? "active" : "")?>"><a href="/students">Students</a></li>
+    		  @endif
         </ul>
 </div>
