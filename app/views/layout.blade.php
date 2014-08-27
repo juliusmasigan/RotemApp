@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
 	<?php echo HTML::style('css/bootstrap.css'); ?>
 	<?php echo HTML::style('css/bootstrap-multiselect.css'); ?>
+	<?php echo HTML::style('css/bootstrap-select.min.css'); ?>
 
     <!-- Custom styles for this template -->
     <?php echo HTML::style('css/style.css'); ?>
@@ -20,6 +21,7 @@
 	<?php echo HTML::script('js/jquery-2.1.0.min.js'); ?>
 	<?php echo HTML::script('js/bootstrap.min.js'); ?>
 	<?php echo HTML::script('js/bootstrap-multiselect.js'); ?>
+	<?php echo HTML::script('js/bootstrap-select.min.js'); ?>
 	<?php echo HTML::script('js/script.js'); ?>
 
   </head>
