@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2014 at 12:22 AM
+-- Generation Time: Aug 27, 2014 at 02:06 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -35,7 +35,28 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   `domain` varchar(1000) NOT NULL,
   `password` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `administrators`
+--
+
+INSERT INTO `administrators` (`id`, `full_name`, `email`, `contact_number`, `institution_id`, `domain`, `password`) VALUES
+(3, 'Julius Masigan', 'juliusmasigan@gmail.com', '12345', 3, 'xMorphx.skillquest.com', '30e6d8432ce54710f9c09f305e7b9829');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answers`
+--
+
+CREATE TABLE IF NOT EXISTS `answers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `answer` text NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -49,7 +70,15 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `name`, `start_time`, `end_time`) VALUES
+(1, 'Class A', '08:20:50', '08:20:50'),
+(2, 'Class B', '22:46:43', '22:46:43');
 
 -- --------------------------------------------------------
 
@@ -62,7 +91,14 @@ CREATE TABLE IF NOT EXISTS `institutions` (
   `name` varchar(500) NOT NULL,
   `number_students` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `institutions`
+--
+
+INSERT INTO `institutions` (`id`, `name`, `number_students`) VALUES
+(3, 'xMorphx', 200);
 
 -- --------------------------------------------------------
 
@@ -82,6 +118,23 @@ CREATE TABLE IF NOT EXISTS `parents` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `queries`
+--
+
+CREATE TABLE IF NOT EXISTS `queries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `query_title` varchar(1000) NOT NULL,
+  `query` text NOT NULL,
+  `topic_id` int(11) NOT NULL,
+  `answer_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `registrations`
 --
 
@@ -91,8 +144,19 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `registration_type` varchar(255) NOT NULL,
   `verification_code` varchar(255) NOT NULL,
   `status` varchar(45) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `registrations`
+--
+
+INSERT INTO `registrations` (`id`, `user_id`, `registration_type`, `verification_code`, `status`, `timestamp`) VALUES
+(4, 2, 'teacher', '1286079365', 'approved', '2014-08-24 02:26:25'),
+(5, 3, 'student', '1315078738', 'approved', '2014-08-24 02:26:25'),
+(6, 4, 'student', '1914611466', 'approved', '2014-08-24 02:26:25'),
+(7, 3, 'teacher', '1835249475', 'approved', '2014-08-24 02:26:25');
 
 -- --------------------------------------------------------
 
@@ -112,6 +176,14 @@ CREATE TABLE IF NOT EXISTS `students` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `full_name`, `contact_number`, `email`, `password`, `parents_id`, `status`, `class_id`) VALUES
+(3, 'Julius Masigan', '+639068118613', 'juliusmasigan@gmail.com', '30e6d8432ce54710f9c09f305e7b9829', 0, '', 1),
+(4, 'Student1', '123456', 'a@b.com', '30e6d8432ce54710f9c09f305e7b9829', 0, '', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +199,28 @@ CREATE TABLE IF NOT EXISTS `teachers` (
   `status` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `full_name`, `contact_number`, `email`, `password`, `status`) VALUES
+(2, 'Julius Masigan', '12345', 'juliusmasigan@gmail.com', '30e6d8432ce54710f9c09f305e7b9829', ''),
+(3, 'Teacher1', '123', 'b@c.com', '30e6d8432ce54710f9c09f305e7b9829', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topics`
+--
+
+CREATE TABLE IF NOT EXISTS `topics` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic` varchar(255) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
