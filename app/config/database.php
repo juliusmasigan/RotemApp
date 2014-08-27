@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'rushtd49_ccap',
+			'database'  => 'rushtd49_ccapp',
 			'username'  => 'rushtd49_ccuser',
 			'password'  => '#skillquest99',
 			'charset'   => 'utf8',
@@ -66,7 +66,7 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'rushtd49_ccap',
+			'database' => 'rushtd49_ccapp',
 			'username' => 'rushtd49_ccuser',
 			'password' => '#skillquest99',
 			'charset'  => 'utf8',
