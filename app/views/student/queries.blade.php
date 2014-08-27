@@ -20,7 +20,11 @@
 						'placeholder' => 'Your question here',
 						'rows' => 1,
 					)); }}
-					{{ Form::select('topic', $topics, null, array('class' => 'form-control', 'placeholder' => 'Choose Topic')); }}
+					<?php
+					//Add a null option.
+					$topics = array("-1" => "Choose Topic:") + $topics;
+					?>
+					{{ Form::select('topic', $topics, -1, array('class' => 'form-control selectpicker show-menu-arrow', 'placeholder' => 'Choose Topic')); }}
 					{{ Form::submit('Ask', array('class' => 'btn btn-primary')); }}
 				{{ Form::close(); }}
 			</div>
@@ -87,5 +91,10 @@
     </div><!-- /.container -->
     @include('createMessage')
 
+<script>
+	$('select.selectpicker').selectpicker({
+		width:'200px'
+	});
+</script>
 
 @stop

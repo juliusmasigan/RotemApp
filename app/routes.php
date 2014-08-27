@@ -152,6 +152,8 @@ Route::get('alerts', 'AlertController@page_index');
 
 Route::post('alerts', 'AlertController@post');
 
+Route::get('queries', 'QueryController@page_index');
+
 Route::get('profile', function()
 {
     return View::make('profile', array('page' => 'profile'));
