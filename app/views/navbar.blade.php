@@ -12,10 +12,12 @@
                   <li><a href="#">View All Events</a></li>
                 </ul>
           </li>
-          @if(Session::get('user.type') != 'student') {
-          <li class="<?php echo ($page == "alerts" ? "active" : "")?>"><a href="/alerts">Alerts</a></li>
-          }
-    		  @if(Session::get('user.type')[0] == 'admin')
+			<?php $user_type_array = Session::get('user.type'); ?>
+          	@if($user_type_array[0] != 'student')
+          	<li class="<?php echo ($page == "alerts" ? "active" : "")?>"><a href="/alerts">Alerts</a></li>
+          	@endif
+
+    		  @if($user_type_array[0] == 'admin')
     		  <li class="<?php echo ($page == "staffs" ? "active" : "")?>"><a href="/teachers">Staffs</a></li>
     		  <li class="<?php echo ($page == "students" ? "active" : "")?>"><a href="/students">Students</a></li>
     		  @endif
