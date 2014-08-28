@@ -313,3 +313,18 @@ form .multiselect b.caret {
 	display:none;
 }
 /* ALERT PAGE */
+
+
+/* QUERY PAGE */
+.query-title {
+	font-size:16px;
+}
+.query-creator {
+	font-style:italic;
+	margin-left:20px;
+}
+.new-answer {
+	width:100%;
+	display:inline-block;
+}
+/* QUERY PAGE */

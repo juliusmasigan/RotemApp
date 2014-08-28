@@ -7,7 +7,7 @@ class Query extends Eloquent {
 	public $incrementing = true;
 
 	public function answer() {
-		return $this->hasMany('Answer');
+		return $this->hasMany('Answer', 'query_id');
 	}
 
 	public function topic() {

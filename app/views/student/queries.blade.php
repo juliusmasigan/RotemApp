@@ -30,59 +30,19 @@
 			</div>
             <div class="msgContainer">
 
+				@foreach($queries as $query)
                 <div class="msgIndContainer">
-                    <div class="msg-post-edit right">
-                            <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
-                    </div>
-                    <div class="msg-user">
-                        <span id="user-name" class="user-name">Walter</span><br>
-                        <span class="feed-date">May 25, 2014</span>
-                    </div>
-                    <div class="msg-msg">
-                        <p class="msg-subj">
-                            Lorem ipsum dolor.
-                        </p>
-                        <p class="msg-body">
-                            Lorem ipsum dolor. Sit amet id ridiculus vitae elit. Eget gravida eu. Eget integer ac et malesuada nulla velit sit vel. Eu amet metus curabitur vivamus parturient. Viverra sit quis hendrerit adipiscing mattis. Proin quam etiam a pellentesque in libero.
-                        </p>
-                    </div>
+					<div class="query-header">
+						<div class="query-title"><strong>Q: {{ $query->title; }}</strong></div>
+						<!--span class="query-creator">Posted by: {{ $query->student_full_name; }}</span-->
+					</div>
+					@foreach($query->answer as $answer)
+					<div class="query-answer">
+						A: {{ $answer->detail; }}
+					</div>
+					@endforeach
                 </div>
-
-                <div class="msgIndContainer">
-                    <div class="msg-post-edit right">
-                            <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
-                    </div>
-                    <div class="msg-user">
-                        <span id="user-name" class="user-name">Jesse</span><br>
-                        <span class="feed-date">May 25, 2014</span>
-                    </div>
-                    <div class="msg-msg">
-                        <p class="msg-subj">
-                            Lorem ipsum dolor.
-                        </p>
-                        <p class="msg-body">
-                            Lorem ipsum dolor. Sit amet id ridiculus vitae elit. Eget gravida eu. Eget integer ac et malesuada nulla velit sit vel. Eu amet metus curabitur vivamus parturient. Viverra sit quis hendrerit adipiscing mattis. Proin quam etiam a pellentesque in libero.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="msgIndContainer">
-                    <div class="msg-post-edit right">
-                            <button class="feed-remove-btn btn-link"><span class="glyphicon glyphicon-remove"></span></button>
-                    </div>
-                    <div class="msg-user">
-                        <span id="user-name" class="user-name">Saul</span><br>
-                        <span class="feed-date">May 25, 2014</span>
-                    </div>
-                    <div class="msg-msg">
-                        <p class="msg-subj">
-                            Lorem ipsum dolor.
-                        </p>
-                        <p class="msg-body">
-                            Lorem ipsum dolor. Sit amet id ridiculus vitae elit. Eget gravida eu. Eget integer ac et malesuada nulla velit sit vel. Eu amet metus curabitur vivamus parturient. Viverra sit quis hendrerit adipiscing mattis. Proin quam etiam a pellentesque in libero.
-                        </p>
-                    </div>
-                </div>
+				@endforeach
 
             </div>
         </div>
