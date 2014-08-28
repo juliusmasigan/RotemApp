@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.6
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 27, 2014 at 02:06 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Host: localhost
+-- Generation Time: Aug 28, 2014 at 11:43 AM
+-- Server version: 5.5.37-0ubuntu0.13.10.1
+-- PHP Version: 5.5.3-1ubuntu2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `skillquest_schema`
+-- Database: `rushtd49_ccapp`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `administrators` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `full_name` varchar(500) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact_number` varchar(255) NOT NULL,
   `institution_id` int(11) NOT NULL,
   `domain` varchar(1000) NOT NULL,
-  `password` varchar(500) NOT NULL,
-  PRIMARY KEY (`id`)
+  `password` varchar(500) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -51,12 +50,12 @@ INSERT INTO `administrators` (`id`, `full_name`, `email`, `contact_number`, `ins
 --
 
 CREATE TABLE IF NOT EXISTS `answers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `answer` text NOT NULL,
+`id` int(11) NOT NULL,
+  `query_id` int(11) NOT NULL,
+  `detail` text NOT NULL,
   `created_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -65,11 +64,10 @@ CREATE TABLE IF NOT EXISTS `answers` (
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `start_time` time NOT NULL,
-  `end_time` time NOT NULL,
-  PRIMARY KEY (`id`)
+  `end_time` time NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -87,10 +85,9 @@ INSERT INTO `classes` (`id`, `name`, `start_time`, `end_time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `institutions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `number_students` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `number_students` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
@@ -107,12 +104,11 @@ INSERT INTO `institutions` (`id`, `name`, `number_students`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `parents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `middle_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
-  `contact_number` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `contact_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -122,15 +118,20 @@ CREATE TABLE IF NOT EXISTS `parents` (
 --
 
 CREATE TABLE IF NOT EXISTS `queries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `query_title` varchar(1000) NOT NULL,
-  `query` text NOT NULL,
-  `topic_id` int(11) NOT NULL,
-  `answer_id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
+  `title` varchar(1000) NOT NULL,
+  `detail` text NOT NULL,
+  `topic_id` int(11) DEFAULT NULL,
   `student_id` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `queries`
+--
+
+INSERT INTO `queries` (`id`, `title`, `detail`, `topic_id`, `student_id`, `timestamp`) VALUES
+(1, 'asdf', '', NULL, 3, '2014-08-28 05:08:34');
 
 -- --------------------------------------------------------
 
@@ -139,13 +140,12 @@ CREATE TABLE IF NOT EXISTS `queries` (
 --
 
 CREATE TABLE IF NOT EXISTS `registrations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `registration_type` varchar(255) NOT NULL,
   `verification_code` varchar(255) NOT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
@@ -165,15 +165,14 @@ INSERT INTO `registrations` (`id`, `user_id`, `registration_type`, `verification
 --
 
 CREATE TABLE IF NOT EXISTS `students` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `full_name` varchar(500) NOT NULL,
   `contact_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(500) NOT NULL,
   `parents_id` int(11) NOT NULL,
   `status` varchar(45) NOT NULL,
-  `class_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `class_id` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -191,13 +190,12 @@ INSERT INTO `students` (`id`, `full_name`, `contact_number`, `email`, `password`
 --
 
 CREATE TABLE IF NOT EXISTS `teachers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `full_name` varchar(500) NOT NULL,
   `contact_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(500) NOT NULL,
-  `status` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  `status` varchar(45) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -215,12 +213,19 @@ INSERT INTO `teachers` (`id`, `full_name`, `contact_number`, `email`, `password`
 --
 
 CREATE TABLE IF NOT EXISTS `topics` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `topic` varchar(255) NOT NULL,
+`id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `created_by` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `topics`
+--
+
+INSERT INTO `topics` (`id`, `name`, `created_by`, `timestamp`) VALUES
+(0, 'Science', 2, '2014-08-27 09:47:01'),
+(1, 'Math', 1, '2014-08-27 10:11:52');
 
 -- --------------------------------------------------------
 
@@ -229,17 +234,145 @@ CREATE TABLE IF NOT EXISTS `topics` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(500) NOT NULL,
   `user_type` varchar(255) NOT NULL,
   `user_entity_id` int(11) NOT NULL,
   `status` varchar(45) NOT NULL,
   `log_time` datetime NOT NULL,
-  `last_log_time` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `last_log_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `administrators`
+--
+ALTER TABLE `administrators`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `answers`
+--
+ALTER TABLE `answers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `institutions`
+--
+ALTER TABLE `institutions`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `parents`
+--
+ALTER TABLE `parents`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `queries`
+--
+ALTER TABLE `queries`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `registrations`
+--
+ALTER TABLE `registrations`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `topics`
+--
+ALTER TABLE `topics`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `administrators`
+--
+ALTER TABLE `administrators`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `answers`
+--
+ALTER TABLE `answers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `institutions`
+--
+ALTER TABLE `institutions`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `parents`
+--
+ALTER TABLE `parents`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `queries`
+--
+ALTER TABLE `queries`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `registrations`
+--
+ALTER TABLE `registrations`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `topics`
+--
+ALTER TABLE `topics`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
