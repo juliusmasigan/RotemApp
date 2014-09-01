@@ -6,4 +6,8 @@ class Answer extends Eloquent {
 
 	public $incrementing = true;
 
+	public static function query() {
+		return $this->belongsTo('Query');
+	}
+
 }

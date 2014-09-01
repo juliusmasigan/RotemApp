@@ -26,7 +26,7 @@
 					</div>
 					@endforeach
 					<div class="new-answer">
-						<button class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addAnswerModal">Add Answer</button>
+						<button class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addAnswerModal" onclick="javascript:prepareForm({{ $query->id; }});">Add Answer</button>
 					</div>
                 </div>
 				@endforeach
@@ -41,14 +41,20 @@
 	<div class="modal fade" id="addAnswerModal" tabindex="-1" role="dialog" aria-labelledby="answerModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
+				{{ Form::open(array('url'=>'answers', 'method' => 'POST', 'class' => 'answers-form')); }}
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title" id="answerModalLabel">Add Answer</h4>
+					<h4 class="modal-title" id="answerModalLabel">Answer</h4>
 				</div>
 				<div class="modal-body">
+						{{ Form::textarea('answer', null, array('class' => 'form-control', 'placeholder' => 'Your answer here')); }}
+						{{ Form::hidden('query_id'); }}
 				</div>
 				<div class="modal-footer">
+					{{ Form::button('Cancel', array('class' => 'btn btn-default')); }}
+					{{ Form::submit('Submit', array('class' => 'btn btn-info')); }}
 				</div>
+				{{ Form::close(); }}
 			</div>
 		</div>
 	</div>
@@ -58,6 +64,11 @@
 	$('select.selectpicker').selectpicker({
 		width:'200px'
 	});
+
+	var prepareForm = function(id) {
+		$('form.answers-form input[name=query_id]').val(id);
+	};
 </script>
+
 
 @stop
