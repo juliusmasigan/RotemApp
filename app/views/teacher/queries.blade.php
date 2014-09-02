@@ -18,6 +18,21 @@
                 <div class="msgIndContainer">
 					<div class="query-header">
 						<div class="query-title"><strong>Q: {{ $query->title; }}</strong></div>
+						<div class="topic-title">Topic: 
+							@if($query->topic) {{ $query->topic->name; }}
+							@else
+								<span class="topic-toggler">
+									<span>None</span>
+									<span class="topic-lists">
+									<?php
+									//Add a null option.
+									$topics = array("-1" => "Choose Topic:") + $topics;
+									?>
+									{{ Form::select('topic', $topics, -1, array('class' => 'form-control selectpicker show-menu-arrow', 'placeholder' => 'Choose Topic')); }}
+									</span>
+								</span>
+							@endif
+						</div>
 						<!--span class="query-creator">Posted by: {{ $query->student_full_name; }}</span-->
 					</div>
 					@foreach($query->answer as $answer)
@@ -51,7 +66,7 @@
 						{{ Form::hidden('query_id'); }}
 				</div>
 				<div class="modal-footer">
-					{{ Form::button('Cancel', array('class' => 'btn btn-default')); }}
+					{{ Form::button('Cancel', array('class' => 'btn btn-default modal-close-btn')); }}
 					{{ Form::submit('Submit', array('class' => 'btn btn-info')); }}
 				</div>
 				{{ Form::close(); }}
@@ -68,6 +83,19 @@
 	var prepareForm = function(id) {
 		$('form.answers-form input[name=query_id]').val(id);
 	};
+
+	$('.modal button.modal-close-btn').on('click', function(event) {
+		$('.modal').modal('hide');
+	});
+
+
+	$('.topic-toggler span:first').click(function(event) {
+		$(this).toggle();
+		$(this).siblings('span').toggle();
+	});
+
+	$('.topic-toggler span.topic-lists').on('change', function(event) {
+	});
 </script>
 
 

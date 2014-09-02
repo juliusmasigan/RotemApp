@@ -327,4 +327,7 @@ form .multiselect b.caret {
 	width:100%;
 	display:inline-block;
 }
+.topic-toggler .topic-lists {
+	display:none;
+}
 /* QUERY PAGE */

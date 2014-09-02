@@ -45,9 +45,14 @@ class QueryController extends \BaseController {
 		Query::insert(array(
 			'title' => $posts['query'],
 			'student_id' => Session::get('uid'),
+			'topic_id' => $posts['topic'],
 		));
 
 		return Redirect::to("queries");
+	}
+
+	public function update() {
+		
 	}
 
 }

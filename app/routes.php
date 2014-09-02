@@ -156,6 +156,8 @@ Route::get('queries', 'QueryController@page_index');
 
 Route::post('queries', 'QueryController@post');
 
+Route::put('queries/{id}', 'QueryController@update');
+
 Route::post('answers', 'AnswerController@post');
 
 Route::get('profile', function()
