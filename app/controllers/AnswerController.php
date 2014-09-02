@@ -21,6 +21,14 @@ class AnswerController extends \BaseController {
 		if($validator->fails())
 			return Redirect::to('queries')->withErrors($validator)->withInput($posts);
 
+		$answers = new Answer();
+		$answers->insert(array(
+			'detail' => $posts['answer'],
+			'query_id' => $posts['query_id'],
+			'created_by' => Session::get('uid'),
+		));
+
+		return Redirect::to('queries');
 	}
 
 }

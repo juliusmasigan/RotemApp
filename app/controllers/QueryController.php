@@ -43,7 +43,7 @@ class QueryController extends \BaseController {
 		}
 
 		Query::insert(array(
-			'query_title' => $posts['query'],
+			'title' => $posts['query'],
 			'student_id' => Session::get('uid'),
 		));
 
