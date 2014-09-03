@@ -27,8 +27,11 @@
 									<?php
 									//Add a null option.
 									$topics = array("-1" => "Choose Topic:") + $topics;
+									$url = "queries/{$query->id}";
 									?>
+									{{ Form::open(array('url' => $url, 'method' => 'PUT')); }}
 									{{ Form::select('topic', $topics, -1, array('class' => 'form-control selectpicker show-menu-arrow', 'placeholder' => 'Choose Topic')); }}
+									{{ Form::close(); }}
 									</span>
 								</span>
 							@endif

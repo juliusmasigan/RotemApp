@@ -52,7 +52,6 @@ class QueryController extends \BaseController {
 	}
 
 	public function update() {
-		
 	}
 
 }
