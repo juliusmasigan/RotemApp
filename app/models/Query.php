@@ -6,6 +6,8 @@ class Query extends Eloquent {
 
 	public $incrementing = true;
 
+	public $timestamps = false;
+
 	public function answer() {
 		return $this->hasMany('Answer', 'query_id');
 	}
