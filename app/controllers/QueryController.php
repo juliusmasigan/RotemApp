@@ -56,6 +56,9 @@ class QueryController extends \BaseController {
 
 		$queries = Query::find($id);
 		$queries->topic_id = $puts['topic_id'];
+		$queries->save();
+
+		return Redirect::to("queries");
 	}
 
 }
