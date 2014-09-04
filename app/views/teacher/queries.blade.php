@@ -30,7 +30,7 @@
 									$url = "queries/{$query->id}";
 									?>
 									{{ Form::open(array('url' => $url, 'method' => 'PUT')); }}
-									{{ Form::select('topic', $topics, -1, array('class' => 'form-control selectpicker show-menu-arrow', 'placeholder' => 'Choose Topic')); }}
+									{{ Form::select('topic_id', $topics, -1, array('class' => 'form-control selectpicker show-menu-arrow', 'placeholder' => 'Choose Topic')); }}
 									{{ Form::close(); }}
 									</span>
 								</span>
@@ -97,7 +97,8 @@
 		$(this).siblings('span').toggle();
 	});
 
-	$('.topic-toggler span.topic-lists').on('change', function(event) {
+	$('.topic-toggler span.topic-lists select').on('change', function(event) {
+		$(this).parents('form').submit();
 	});
 </script>
 

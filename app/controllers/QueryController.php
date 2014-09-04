@@ -51,7 +51,11 @@ class QueryController extends \BaseController {
 		return Redirect::to("queries");
 	}
 
-	public function update() {
+	public function update($id) {
+		parse_str(file_get_contents("php://input"), $puts);
+
+		$queries = Query::find($id);
+		$queries->topic_id = $puts['topic_id'];
 	}
 
 }
