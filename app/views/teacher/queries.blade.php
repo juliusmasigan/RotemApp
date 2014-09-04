@@ -37,7 +37,7 @@
 							@endif
 						</div>
 						<!--span class="query-creator">Posted by: {{ $query->student_full_name; }}</span-->
-					</div>
+					</div><br/>
 					@foreach($query->answer as $answer)
 					<div class="query-answer">
 						A: {{ $answer->detail; }}
