@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'rushtd49_ccapp',
-			'username'  => 'rushtd49_ccuser',
-			'password'  => '#skillquest99',
+			'database'  => 'rotem',
+			'username'  => 'root',
+			'password'  => '#',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

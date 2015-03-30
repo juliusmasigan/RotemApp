@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Skill Quest - Welcome!</title>
+    <title>Rotem App</title>
     <!--base href="http://skillquest.eu1.frbit.net"-->
     <!-- Bootstrap core CSS -->
 	<?php echo HTML::style('css/bootstrap.css'); ?>
